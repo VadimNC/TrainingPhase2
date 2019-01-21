@@ -1,7 +1,7 @@
 <div>
-  <div>БОЛЬШИМИ: <br> {{someoneText | pipeColor : 'upper' : ''}}</div>
+  <div>BIG: <br> <b>{{someoneText | pipeText : 'upper' : ''}}</b></div>
   <p></p>
-  <div>Неразрывныйтекст: <br>{{someoneText | pipeColor : 'spaces' : ''}}</div>
+  <div>Non-breakingText: <br><b>{{someoneText | pipeText : 'spaces' : ''}}</b></div>
   <p></p>
-  <div>БОЛЬШИМИ+неразрывный: <br>{{someoneText | pipeColor : 'uppSpac' : 'spaces'}}</div>
+  <div>BIG+Non-breakingText: <br><b>{{someoneText | pipeText : 'upper' | pipeText: "spaces"}}</b></div>
 </div>

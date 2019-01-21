@@ -6,14 +6,21 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {ComponentAComponent} from './component-a/component-a.component';
-import {FormsModule} from '@angular/forms';
-import { PipeColorPipe } from './pipe-color.pipe';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { PipeTextPipe} from './pipe-text.pipe';
+import { ComponentFormsComponent } from './component-forms/component-forms.component';
+import { MaterialModule} from './material/material.module';
+import { FormTdComponent } from './component-forms/form-td/form-td.component';
+import { FormReactComponent } from './component-forms/form-react/form-react.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComponentAComponent,
-    PipeColorPipe
+    PipeTextPipe,
+    ComponentFormsComponent,
+    FormTdComponent,
+    FormReactComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +28,9 @@ import { PipeColorPipe } from './pipe-color.pipe';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
