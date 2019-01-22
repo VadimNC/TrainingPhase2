@@ -1,5 +1,10 @@
 <nav>
-  <a routerLink="form-td" routerLinkActive="activClassCSS"> Form-TD </a>
-  <a routerLink="form-react" routerLinkActive="activClassCSS"> Form-Reactiv </a>
+  <div class="nav-wrapper">
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a routerLink="form-td">Form-TD</a></li>
+      <li><a routerLink="form-react"> Form-Reactiv </a></li>
+    </ul>
+  </div>
 </nav>
+
 <router-outlet></router-outlet>

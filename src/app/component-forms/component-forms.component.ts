@@ -1,14 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-component-forms',
   templateUrl: './component-forms.component.html',
   styleUrls: ['./component-forms.component.css']
 })
-export class ComponentFormsComponent implements OnInit {
+export class ComponentFormsComponent {
 
-
-  ngOnInit(): void {
-  }
 }

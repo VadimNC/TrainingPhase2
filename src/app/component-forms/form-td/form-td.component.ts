@@ -1,24 +1,28 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {FormsService} from '../../forms.service';
 
 @Component({
   selector: 'app-form-td',
   templateUrl: './form-td.component.html',
   styleUrls: ['./form-td.component.css']
 })
-export class FormTdComponent implements OnInit {
+export class FormTdComponent {
   @ViewChild('f') signupForm: NgForm;
-  defaultQuestion = 'teacher';
-  answer = '';
-  genders = ['male', 'female'];
-  user = {
+  public defaultQuestion = 'teacher';
+  public answer = '';
+  public genders = ['male', 'female'];
+  public user = {
     username: '',
     email: '',
     secretQuestion: '',
     answer: '',
     gender: ''
   };
-  submitted = false;
+  public submitted = false;
+
+  constructor(private formsService: FormsService) {
+  }
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -28,6 +32,7 @@ export class FormTdComponent implements OnInit {
       }
     });
   }
+
   onSubmit() {
     this.submitted = true;
     this.user.username = this.signupForm.value.userData.username;
@@ -35,12 +40,7 @@ export class FormTdComponent implements OnInit {
     this.user.secretQuestion = this.signupForm.value.secret;
     this.user.answer = this.signupForm.value.questionAnswer;
     this.user.gender = this.signupForm.value.gender;
-
     this.signupForm.reset();
+    this.formsService.toString();
   }
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

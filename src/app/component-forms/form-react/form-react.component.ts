@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/index';
 
 @Component({
@@ -8,11 +8,9 @@ import {Observable} from 'rxjs/index';
   styleUrls: ['./form-react.component.css']
 })
 export class FormReactComponent implements OnInit {
-  genders = ['male', 'female'];
-  signupForm: FormGroup;
-  forbiddenUsernames = ['Chris', 'Anna'];
-
-  constructor() {}
+  public genders = ['male', 'female'];
+  public signupForm: FormGroup;
+  public forbiddenUsernames = ['Chris', 'Anna'];
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -23,9 +21,7 @@ export class FormReactComponent implements OnInit {
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     });
-    // this.signupForm.valueChanges.subscribe(
-    //   (value) => console.log(value)
-    // );
+
     this.signupForm.statusChanges.subscribe(
       (status) => console.log(status)
     );
@@ -46,7 +42,6 @@ export class FormReactComponent implements OnInit {
 
   onSubmit() {
     console.log(this.signupForm);
-    this.signupForm.reset();
   }
 
   onAddHobby() {
@@ -54,7 +49,7 @@ export class FormReactComponent implements OnInit {
     (<FormArray>this.signupForm.get('hobbies')).push(control);
   }
 
-  forbiddenNames(control: FormControl): {[s: string]: boolean} {
+  forbiddenNames(control: FormControl): { [s: string]: boolean } {
     if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
       return {'nameIsForbidden': true};
     }
