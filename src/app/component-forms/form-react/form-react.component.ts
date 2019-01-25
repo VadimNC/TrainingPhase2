@@ -11,6 +11,7 @@ export class FormReactComponent implements OnInit {
   public genders = ['male', 'female'];
   public signupForm: FormGroup;
   public forbiddenUsernames = ['Chris', 'Anna'];
+  public submitted = false;
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -41,6 +42,8 @@ export class FormReactComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
+    //this.signupForm.value.userData.username;
     console.log(this.signupForm);
   }
 

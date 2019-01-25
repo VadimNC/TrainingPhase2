@@ -7,11 +7,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {ComponentAComponent} from './component-a/component-a.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { PipeTextPipe} from './pipe-text.pipe';
-import { ComponentFormsComponent } from './component-forms/component-forms.component';
-import { MaterialModule} from './material/material.module';
-import { FormTdComponent } from './component-forms/form-td/form-td.component';
-import { FormReactComponent } from './component-forms/form-react/form-react.component';
+import {PipeTextPipe} from './pipe-text.pipe';
+import {ComponentFormsComponent} from './component-forms/component-forms.component';
+import {MaterialModule} from './material/material.module';
+import {FormTdComponent} from './component-forms/form-td/form-td.component';
+import {FormReactComponent} from './component-forms/form-react/form-react.component';
+import {HttpClientModule} from '@angular/common/http';
+import { HttpClientComponent } from './http-client/http-client.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { FormReactComponent } from './component-forms/form-react/form-react.comp
     PipeTextPipe,
     ComponentFormsComponent,
     FormTdComponent,
-    FormReactComponent
+    FormReactComponent,
+    HttpClientComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { FormReactComponent } from './component-forms/form-react/form-react.comp
     MatCheckboxModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,5 +6,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./component-a.component.css']
 })
 export class ComponentAComponent {
-  public someoneText = 'Lorem    ipsum    dolor    sit    amet    consectetur    adipisicing elit  Blanditiis qui.';
+  public someoneText = 'Audi  Adler  Amphicar  Artega  AutoUnion  Apal  AWZZwickau  BUS  BB  Bitter  BMW  Borgward  BrennaborWerke ' +
+    'Brütsch  Champion  Daimler  Dauer  Dürkopp  Dixi  DKW  Espenlaub  Fafnir  Fuldamobil  Glas  Goggomobil  Goliath';
+
 }

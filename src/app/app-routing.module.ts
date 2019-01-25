@@ -4,6 +4,7 @@ import {ComponentAComponent} from './component-a/component-a.component';
 import {ComponentFormsComponent} from './component-forms/component-forms.component';
 import {FormTdComponent} from './component-forms/form-td/form-td.component';
 import {FormReactComponent} from './component-forms/form-react/form-react.component';
+import {HttpClientComponent} from './http-client/http-client.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/compa', pathMatch: 'full'},
@@ -12,7 +13,8 @@ const routes: Routes = [
     {path: 'form-td', component: FormTdComponent},
     {path: 'form-react', component: FormReactComponent}
   ]
-  }
+  },
+  {path: 'http-requests', component: HttpClientComponent}
 ];
 
 @NgModule({

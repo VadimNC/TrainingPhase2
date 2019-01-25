@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {FormsService} from '../../forms.service';
 
@@ -7,7 +7,7 @@ import {FormsService} from '../../forms.service';
   templateUrl: './form-td.component.html',
   styleUrls: ['./form-td.component.css']
 })
-export class FormTdComponent {
+export class FormTdComponent implements OnInit {
   @ViewChild('f') signupForm: NgForm;
   public defaultQuestion = 'teacher';
   public answer = '';
@@ -41,6 +41,8 @@ export class FormTdComponent {
     this.user.answer = this.signupForm.value.questionAnswer;
     this.user.gender = this.signupForm.value.gender;
     this.signupForm.reset();
-    this.formsService.toString();
+  }
+
+  ngOnInit(): void {
   }
 }

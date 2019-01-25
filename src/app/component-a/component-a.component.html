@@ -1,7 +1,10 @@
-<div>
-  <div>BIG: <br> <b>{{someoneText | pipeText : 'upper' : ''}}</b></div>
-  <p></p>
-  <div>Non-breakingText: <br><b>{{someoneText | pipeText : 'spaces' : ''}}</b></div>
-  <p></p>
-  <div>BIG+Non-breakingText: <br><b>{{someoneText | pipeText : 'upper' | pipeText: "spaces"}}</b></div>
+<div class="collection">
+  <ul>
+    <li class="collection-item">BIG text:</li>
+    <li class="collection-item active">{{someoneText | pipeText : 'upper' : ''}}</li>
+    <li class="collection-item">InseparableText:</li>
+    <li class="collection-item active">{{someoneText | pipeText : 'spaces' : ''}}</li>
+    <li class="collection-item">BIG+InseparableText:</li>
+    <li class="collection-item active">{{someoneText | pipeText : 'upper' | pipeText: "spaces"}}</li>
+  </ul>
 </div>

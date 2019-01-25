@@ -43,7 +43,8 @@
           <button
             class="btn btn-default"
             type="button"
-            (click)="onAddHobby()">Add Hobby</button>
+            (click)="onAddHobby()">Add Hobby
+          </button>
           <div
             class="form-group"
             *ngFor="let hobbyControl of signupForm.get('hobbies').controls; let i = index">
@@ -53,8 +54,28 @@
         <span
           *ngIf="!signupForm.valid && signupForm.touched"
           class="help-block">Please enter valid data!</span>
-        <button class="btn waves-effect waves-light" type="submit">Submit<i class="material-icons right">send</i></button>
+        <button class="btn waves-effect waves-light" type="submit">Submit<i class="material-icons right">send</i>
+        </button>
       </form>
     </div>
   </div>
+
+  <hr>
+  <div class="row" *ngIf="submitted">
+    <div class="col-sm-3">
+      <div class="card-panel teal">
+        <span class="white-text">
+      <h3>Your Data</h3>
+          <p> {{signupForm.value | json}} </p>
+          <!--<p> {{signupForm.controls. .username.value | json}} </p>-->
+          <!--<p>Mail: {{ user.email }}</p>-->
+          <!--<p>Secret Question: Your first {{ user.secretQuestion }}</p>-->
+          <!--<p>Answer: {{ user.answer }}</p>-->
+          <!--<p>Gender: {{ user.gender }}</p>-->
+        </span>
+      </div>
+    </div>
+  </div>
+
+
 </div>
