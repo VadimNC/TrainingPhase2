@@ -8,10 +8,10 @@ import {Observable} from 'rxjs/index';
   styleUrls: ['./form-react.component.css']
 })
 export class FormReactComponent implements OnInit {
-  public genders = ['male', 'female'];
+  public genders: string[] = ['male', 'female'];
   public signupForm: FormGroup;
-  public forbiddenUsernames = ['Chris', 'Anna'];
-  public submitted = false;
+  public forbiddenUsernames: string[] = ['Chris', 'Anna'];
+  public submitted: boolean = false;
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -43,7 +43,6 @@ export class FormReactComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    //this.signupForm.value.userData.username;
     console.log(this.signupForm);
   }
 
@@ -60,7 +59,7 @@ export class FormReactComponent implements OnInit {
   }
 
   forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
-    const promise = new Promise<any>((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       setTimeout(() => {
         if (control.value === 'test@test.com') {
           resolve({'emailIsForbidden': true});
@@ -69,7 +68,6 @@ export class FormReactComponent implements OnInit {
         }
       }, 1500);
     });
-    return promise;
   }
 
 }

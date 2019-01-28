@@ -10,7 +10,6 @@ export class PipeTextPipe implements PipeTransform {
     if (param === 'spaces') {
       result = value.replace(/ /g, '');
     }
-
     return result;
   }
 }

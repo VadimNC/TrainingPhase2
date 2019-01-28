@@ -13,7 +13,7 @@ import {MaterialModule} from './material/material.module';
 import {FormTdComponent} from './component-forms/form-td/form-td.component';
 import {FormReactComponent} from './component-forms/form-react/form-react.component';
 import {HttpClientModule} from '@angular/common/http';
-import { HttpClientComponent } from './http-client/http-client.component';
+import {HttpClientComponent} from './http-client/http-client.component';
 
 @NgModule({
   declarations: [
