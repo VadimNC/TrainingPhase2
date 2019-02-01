@@ -1,0 +1,56 @@
+<div id="examples">
+
+
+  <button class="btn btn-primary" (click)="show=!show">Open all tasks</button>
+
+  <li>Напишите функцию myMethod1(str), которая возвращает строку str с заглавным первым символом, например:
+    <br>myMethod1("вася") == "Вася";
+    <br>myMethod1("") == ""; // нет ошибок при пустой строке
+    <br>
+  </li>
+  <div *ngIf="show">
+    <button class="btn btn-primary" (click)="myMethod1(strng.value)">Run</button>
+    <input class="form-control" placeholder="write a line here with a small letter" #strng>
+    <div><b>Results:</b> {{smbUp}}</div>
+  </div>
+  ==========================================================================================================
+
+  <li>Код ниже получает из массива строк новый массив, содержащий их длины:
+    <p class="ex">
+      &lt;var arr = ["Есть", "жизнь", "на", "Марсе"];&gt;<br/>
+      &lt;var arrLength = [];&gt;<br/>
+      &lt;for (var i = 0; i < arr.length; i++) &gt;<br/>
+      &lt; arrLength[i] = arr[i].length; &gt;<br/>
+      &lt;alert( arrLength ); // 4,5,2,5 &gt;<br/>
+    </p>
+    Перепешите выделенный участок: уберите цикл, используйте вместо него метод map
+    <br>
+  </li>
+  <div *ngIf="show">
+    <button class="btn btn-primary" (click)="myMethod2(arr)">Run</button>
+    <div><b>Results:</b> {{arrLength}}</div>
+  </div>
+  ==========================================================================================================
+
+  <li>На входе массив чисел, например: arr = [1,2,3,4,5].
+    Напишите функцию myMethod3(arrTask3), которая возвращает массив его частичных сумм.
+    Иначе говоря, вызов myMethod3(arrTask3) должен возвращать новый массив из такого же числа элементов, в котором на
+    каждой позиции должна быть сумма элементов arr до этой позиции включительно.
+    То есть:
+    <p class="ex">
+      &lt;для arr = [ 1, 2, 3, 4, 5 ]&gt;<br/>
+      &lt;myMethod3( arr ) = [ 1, 1+2, 1+2+3, 1+2+3+4, 1+2+3+4+5 ] = [ 1, 3, 6, 10, 15 ]&gt;<br/>
+    </p>
+    Еще пример: myMethod3([-2,-1,0,1]) = [-2,-3,-3,-2].
+    <br>
+    Функция не должна модифицировать входной массив.
+    В решении используйте метод arr.reduce.
+  </li>
+  <div *ngIf="show">
+    <button class="btn btn-primary" (click)="myMethod3(arrTask3)">Run</button>
+    <div><b>Results:</b> {{masTask4End}}</div>
+  </div>
+  ==========================================================================================================
+
+
+</div>

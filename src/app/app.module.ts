@@ -14,6 +14,7 @@ import {FormTdComponent} from './component-forms/form-td/form-td.component';
 import {FormReactComponent} from './component-forms/form-react/form-react.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientComponent} from './http-client/http-client.component';
+import { ExamplesTrainingComponent } from './examples-training/examples-training.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {HttpClientComponent} from './http-client/http-client.component';
     ComponentFormsComponent,
     FormTdComponent,
     FormReactComponent,
-    HttpClientComponent
+    HttpClientComponent,
+    ExamplesTrainingComponent
   ],
   imports: [
     BrowserModule,
