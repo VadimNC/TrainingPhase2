@@ -1,56 +1,121 @@
 <div id="examples">
 
+  <div class="collection">
 
-  <button class="btn btn-primary" (click)="show=!show">Open all tasks</button>
 
-  <li>Напишите функцию myMethod1(str), которая возвращает строку str с заглавным первым символом, например:
-    <br>myMethod1("вася") == "Вася";
-    <br>myMethod1("") == ""; // нет ошибок при пустой строке
-    <br>
-  </li>
-  <div *ngIf="show">
-    <button class="btn btn-primary" (click)="myMethod1(strng.value)">Run</button>
-    <input class="form-control" placeholder="write a line here with a small letter" #strng>
-    <div><b>Results:</b> {{smbUp}}</div>
+    <h3 class="collection-item showCursor" (click)="objShow.show1=!objShow.show1">Первая заглаваная буква</h3>
+    <div *ngIf="objShow.show1">
+      <li>Напишите функцию bigFirstSymbl(str), которая возвращает строку str с заглавным первым символом, например:
+        <br>myMethod1("вася") == "Вася";
+        <br>myMethod1("") == ""; // нет ошибок при пустой строке
+        <br>
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="bigFirstSymbol(strng.value)">Run task #1</button>
+        <input class="form-control" placeholder="write a line here with a small letter" #strng>
+        <div><b>Results:</b> {{resultStringWithSymbolUp}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show2=!objShow.show2">Массив длин слов</h3>
+    <div *ngIf="objShow.show2">
+      <li>Код ниже получает из массива строк новый массив, содержащий их длины:
+        <p class="ex">
+          &lt;var arr = ["Есть", "жизнь", "на", "Марсе"];&gt;<br/>
+          &lt;var arrLength = [];&gt;<br/>
+          &lt;for (var i = 0; i < arr.length; i++) &gt;<br/>
+          &lt; arrLength[i] = arr[i].length; &gt;<br/>
+          &lt;alert( arrLength ); // 4,5,2,5 &gt;<br/>
+        </p>
+        Перепешите выделенный участок: уберите цикл, используйте вместо него метод map
+        <br>
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="stringToNum(arrayOfStringsForCountSymbolsAmount)">Run task #2</button>
+        <div><b>Results:</b> {{arrLengthOfEachString}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show3=!objShow.show3">Массив сумм рядомстоящих чисел</h3>
+    <div *ngIf="objShow.show3">
+      <li>На входе массив чисел, например: arr = [1,2,3,4,5].
+        Напишите функцию getSums(arrTask3), которая возвращает массив его частичных сумм.
+        Иначе говоря, вызов getSums(arrTask3) должен возвращать новый массив из такого же числа элементов, в котором на
+        каждой позиции должна быть сумма элементов arr до этой позиции включительно.
+        То есть:
+        <p class="ex">
+          &lt;для arr = [ 1, 2, 3, 4, 5 ]&gt;<br/>
+          &lt;myMethod3( arr ) = [ 1, 1+2, 1+2+3, 1+2+3+4, 1+2+3+4+5 ] = [ 1, 3, 6, 10, 15 ]&gt;<br/>
+        </p>
+        Еще пример: myMethod3([-2,-1,0,1]) = [-2,-3,-3,-2].
+        <br>
+        Функция не должна модифицировать входной массив.
+        В решении используйте метод arr.reduce.
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="getSums(arrSumOfNumbers)">Run task #3</button>
+        <div><b>Results:</b> {{arrayOfSums}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show4=!objShow.show4">АнтиСпам</h3>
+    <div *ngIf="objShow.show4">
+      <li>Напишите функцию checkSpam(str), которая возвращает true, если строка str содержит „AUDI“ или „BMW“, а иначе
+        false.
+        Функция должна быть нечувствительна к регистру:
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="checkSpam(strng.value)">Run task #4</button>
+        <input class="form-control" placeholder="write a string" #strng>
+        <div><b>Results:</b> {{isSpamInMessage}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show5=!objShow.show5">Обрезание строки</h3>
+    <div *ngIf="objShow.show5">
+      <li>Создайте функцию truncate(str, maxlength), которая проверяет длину строки str, и если она превосходит
+        maxlength
+        –
+        заменяет конец str на "...", так чтобы ее длина стала равна maxlength.
+        Результатом функции должна быть (при необходимости) усечённая строка.
+        <br>Например: ("Вот, что мне хотелось бы сказать на эту тему:", 20) = "Вот, что мне хоте...":
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="truncate(strng2.value, strng1.value)">Run task #5</button>
+        <input class="form-control" placeholder="put a number" #strng1>
+        <input class="form-control" placeholder="write a string" #strng2>
+        <div><b>Results:</b> {{strTruncateResult}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show6=!objShow.show6">Из строки в число</h3>
+    <div *ngIf="objShow.show6">
+      <li>Есть стоимость в виде строки: "$120". То есть, первым идёт знак валюты, а затем – число.
+        Создайте функцию extractCurrencyValue(str), которая будет из такой строки выделять число-значение, в данном
+        случае
+        120.:
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="extractCurrencyValue()">Run task #6</button>
+        <div><b>Results:</b> {{extractCurrencyValuePrice}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show7=!objShow.show7">Определите, пуст ли объект</h3>
+    <div *ngIf="objShow.show7">
+      <li>Создайте функцию isEmpty(obj), которая возвращает true, если в объекте нет свойств и false – если хоть одно
+        свойство есть.
+        <p class="ex">
+          &lt;public objct = name: 'Vasya';&gt;<br/>
+        </p>
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="isEmpty(objectForTestingIsEmpty)">Run task #7</button>
+        <div><b>Results:</b> {{isObjectEmpty}}</div>
+      </div>
+    </div>
+
+
   </div>
-  ==========================================================================================================
-
-  <li>Код ниже получает из массива строк новый массив, содержащий их длины:
-    <p class="ex">
-      &lt;var arr = ["Есть", "жизнь", "на", "Марсе"];&gt;<br/>
-      &lt;var arrLength = [];&gt;<br/>
-      &lt;for (var i = 0; i < arr.length; i++) &gt;<br/>
-      &lt; arrLength[i] = arr[i].length; &gt;<br/>
-      &lt;alert( arrLength ); // 4,5,2,5 &gt;<br/>
-    </p>
-    Перепешите выделенный участок: уберите цикл, используйте вместо него метод map
-    <br>
-  </li>
-  <div *ngIf="show">
-    <button class="btn btn-primary" (click)="myMethod2(arr)">Run</button>
-    <div><b>Results:</b> {{arrLength}}</div>
-  </div>
-  ==========================================================================================================
-
-  <li>На входе массив чисел, например: arr = [1,2,3,4,5].
-    Напишите функцию myMethod3(arrTask3), которая возвращает массив его частичных сумм.
-    Иначе говоря, вызов myMethod3(arrTask3) должен возвращать новый массив из такого же числа элементов, в котором на
-    каждой позиции должна быть сумма элементов arr до этой позиции включительно.
-    То есть:
-    <p class="ex">
-      &lt;для arr = [ 1, 2, 3, 4, 5 ]&gt;<br/>
-      &lt;myMethod3( arr ) = [ 1, 1+2, 1+2+3, 1+2+3+4, 1+2+3+4+5 ] = [ 1, 3, 6, 10, 15 ]&gt;<br/>
-    </p>
-    Еще пример: myMethod3([-2,-1,0,1]) = [-2,-3,-3,-2].
-    <br>
-    Функция не должна модифицировать входной массив.
-    В решении используйте метод arr.reduce.
-  </li>
-  <div *ngIf="show">
-    <button class="btn btn-primary" (click)="myMethod3(arrTask3)">Run</button>
-    <div><b>Results:</b> {{masTask4End}}</div>
-  </div>
-  ==========================================================================================================
-
 
 </div>
