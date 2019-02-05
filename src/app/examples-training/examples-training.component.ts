@@ -6,7 +6,18 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./examples-training.component.css']
 })
 export class ExamplesTrainingComponent {
-  public objShow = {show1: false, show2: false, show3: false, show4: false, show5: false, show6: false, show7: false};
+  public objShow = {
+    show1: false,
+    show2: false,
+    show3: false,
+    show4: false,
+    show5: false,
+    show6: false,
+    show7: false,
+    show8: false,
+    show9: false,
+    show10: false
+  };
   public resultStringWithSymbolUp = '';
   public arrayOfStringsForCountSymbolsAmount: string[] = ['Есть', 'жизнь', 'на', 'Марсе'];
   public arrLengthOfEachString: number[] = [];
@@ -17,6 +28,19 @@ export class ExamplesTrainingComponent {
   public extractCurrencyValuePrice: number;
   public objectForTestingIsEmpty = {test: 'test'};
   public isObjectEmpty: boolean;
+  public salariesFull = {
+    'Vasya': 100,
+    'Petya': 300,
+    'Dasha': 250
+  };
+  public salariesNull = {};
+  public sumSalaries: number;
+  public nameEmployee: string;
+  public menu = {
+    width: 200,
+    height: 300,
+    title: 'My menu'
+  };
 
   public bigFirstSymbol(str: string): string {
     if (!str) {
@@ -64,4 +88,63 @@ export class ExamplesTrainingComponent {
   public isEmpty(obj: object): void {
     this.isObjectEmpty = Object.keys(obj).length === 0;
   }
+
+  public salarySum(obj: object): number {
+    const arrayNumber: Array<any> = [];
+    if (Object.keys(obj).length === 0) {
+      return this.sumSalaries = 0;
+    } else {
+      for (const k in obj) {
+        if (obj.hasOwnProperty(k)) {
+          let valueArrayObject: number;
+          valueArrayObject = obj[k];
+          arrayNumber.push(valueArrayObject);
+          this.sumSalaries = arrayNumber.reduce((a, b) => a + b, 0);
+        }
+      }
+    }
+    return this.sumSalaries;
+  }
+
+  public bigSalary(obj: any): string {
+    const arrayNumber: Array<any> = [];
+    if (Object.keys(obj).length === 0) {
+      return this.nameEmployee = 'No employees';
+    } else {
+      for (const k in obj) {
+        if (obj.hasOwnProperty(k)) {
+          const valueArrayObject: string = obj[k];
+          arrayNumber.push(valueArrayObject);
+          arrayNumber.sort(compareNumeric);
+          if (arrayNumber[arrayNumber.length - 1] === obj[k]) {
+            this.nameEmployee = k;
+          }
+        }
+      }
+    }
+    return this.nameEmployee;
+  }
+
+  public multiplyNumeric(obj: object): any {
+    for (const k in obj) {
+      if (obj.hasOwnProperty(k)) {
+        if (isNumeric(obj[k])) {
+          obj[k] *= 2;
+        }
+      }
+    }
+  }
+}
+
+function compareNumeric(a, b) {
+  if (a > b) {
+    return 1;
+  }
+  if (a < b) {
+    return -1;
+  }
+}
+
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
 }
