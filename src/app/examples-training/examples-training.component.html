@@ -106,12 +106,73 @@
       <li>Создайте функцию isEmpty(obj), которая возвращает true, если в объекте нет свойств и false – если хоть одно
         свойство есть.
         <p class="ex">
-          &lt;public objct = name: 'Vasya';&gt;<br/>
+          &lt;public objct = test: 'test';&gt;<br/>
         </p>
       </li>
       <div>
-        <button class="btn btn-primary" (click)="isEmpty(objectForTestingIsEmpty)">Run task #7</button>
+        <button class="btn btn-primary" (click)="isEmpty(objectForTestingIsEmpty)">Run task #7(full prop)</button>
+        <button class="btn btn-primary" (click)="isEmpty(salariesNull)">Run task #7(null prop)</button>
         <div><b>Results:</b> {{isObjectEmpty}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show8=!objShow.show8">Сумма свойств</h3>
+    <div *ngIf="objShow.show8">
+      <li> Есть объект salaries с зарплатами. Напишите код, который выведет сумму всех зарплат.
+        Если объект пустой, то результат должен быть 0.
+        <br>Например:
+        salaries =
+        "Vasya": 100,
+        "Petya": 300,
+        "Dasha": 250
+      </li>
+      <div>
+
+        <div class="switch">
+          <label>
+            No properties
+            <input type="checkbox">
+            <span class="lever"></span>
+            Properties
+          </label>
+        </div>
+
+        <button class="btn btn-primary" (click)="salarySum(salariesFull)">Run task #8(full prop)</button>
+        <button class="btn btn-primary" (click)="salarySum(salariesNull)">Run task #8(null prop)</button>
+        <div><b>Results:</b> {{sumSalaries}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show9=!objShow.show9">Свойство с наибольшим значением
+    </h3>
+    <div *ngIf="objShow.show9">
+      <li> Есть объект salaries с зарплатами. Напишите код, который выведет имя сотрудника, у которого самая большая зарплата.
+       Если объект пустой, то пусть он выводит «нет сотрудников».
+        <br>Например:
+        salaries =
+        "Vasya": 100,
+        "Petya": 300,
+        "Dasha": 250
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="bigSalary(salariesFull)">Run task #9(full prop)</button>
+        <button class="btn btn-primary" (click)="bigSalary(salariesNull)">Run task #9(null prop)</button>
+        <div><b>Results:</b> {{nameEmployee}}</div>
+      </div>
+    </div>
+
+<h3 class="collection-item showCursor" (click)="objShow.show10=!objShow.show10">Умножьте численные свойства на 2</h3>
+    <div *ngIf="objShow.show10">
+      <li>Создайте функцию multiplyNumeric, которая получает объект и умножает все численные свойства на 2.
+        <br>Например:
+        menu =
+        width: 200,
+        height: 300,
+        title: "My menu"
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="multiplyNumeric(menu)">Run task #10</button>
+        <div><b>Results:</b> width: {{menu?.width}},<br> height: {{menu?.height}},<br> title: {{menu?.title}}</div>
       </div>
     </div>
 
