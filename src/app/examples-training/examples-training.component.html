@@ -146,8 +146,9 @@
     <h3 class="collection-item showCursor" (click)="objShow.show9=!objShow.show9">Свойство с наибольшим значением
     </h3>
     <div *ngIf="objShow.show9">
-      <li> Есть объект salaries с зарплатами. Напишите код, который выведет имя сотрудника, у которого самая большая зарплата.
-       Если объект пустой, то пусть он выводит «нет сотрудников».
+      <li> Есть объект salaries с зарплатами. Напишите код, который выведет имя сотрудника, у которого самая большая
+        зарплата.
+        Если объект пустой, то пусть он выводит «нет сотрудников».
         <br>Например:
         salaries =
         "Vasya": 100,
@@ -161,7 +162,8 @@
       </div>
     </div>
 
-<h3 class="collection-item showCursor" (click)="objShow.show10=!objShow.show10">Умножьте численные свойства на 2</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show10=!objShow.show10">Умножьте численные свойства на
+      2</h3>
     <div *ngIf="objShow.show10">
       <li>Создайте функцию multiplyNumeric, которая получает объект и умножает все численные свойства на 2.
         <br>Например:
@@ -173,6 +175,27 @@
       <div>
         <button class="btn btn-primary" (click)="multiplyNumeric(menu)">Run task #10</button>
         <div><b>Results:</b> width: {{menu?.width}},<br> height: {{menu?.height}},<br> title: {{menu?.title}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show11=!objShow.show11">Добавить класс в строку</h3>
+    <div *ngIf="objShow.show11">
+      <li>В объекте есть свойство className, которое содержит список «классов» – слов, разделенных пробелом:
+        <br>var obj =
+        className: 'open menu'
+
+        <br>Создайте функцию addClass(obj, cls), которая добавляет в список класс cls, но только если его там еще нет:
+        <br>addClass(obj, 'new'); // obj.className='open menu new'
+        <br>addClass(obj, 'open'); // без изменений (класс уже существует)
+        <br>addClass(obj, 'me'); // obj.className='open menu new me'
+        <br>alert( obj.className ); // "open menu new me"
+        <br>P.S. Ваша функция не должна добавлять лишних пробелов.
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="addClass(obj, 'new')">Run task #11(with 'new')</button>
+        <button class="btn btn-primary" (click)="addClass(obj, 'open')">Run task #11(with 'open')</button>
+        <button class="btn btn-primary" (click)="addClass(obj, 'me')">Run task #11(with 'me')</button>
+        <div><b>Results:</b> {{obj.className}}</div>
       </div>
     </div>
 

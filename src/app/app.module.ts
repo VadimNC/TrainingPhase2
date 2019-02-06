@@ -15,6 +15,7 @@ import {FormReactComponent} from './component-forms/form-react/form-react.compon
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientComponent} from './http-client/http-client.component';
 import { ExamplesTrainingComponent } from './examples-training/examples-training.component';
+import {ExamplesService} from './examples.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { ExamplesTrainingComponent } from './examples-training/examples-training
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ExamplesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

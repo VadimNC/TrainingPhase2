@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ExamplesService} from '../examples.service';
 
 @Component({
   selector: 'app-examples-training',
@@ -16,7 +17,8 @@ export class ExamplesTrainingComponent {
     show7: false,
     show8: false,
     show9: false,
-    show10: false
+    show10: false,
+    show11: false
   };
   public resultStringWithSymbolUp = '';
   public arrayOfStringsForCountSymbolsAmount: string[] = ['Есть', 'жизнь', 'на', 'Марсе'];
@@ -41,6 +43,7 @@ export class ExamplesTrainingComponent {
     height: 300,
     title: 'My menu'
   };
+  public obj = {className: 'open menu'};
 
   public bigFirstSymbol(str: string): string {
     if (!str) {
@@ -130,6 +133,28 @@ export class ExamplesTrainingComponent {
       if (obj.hasOwnProperty(k)) {
         if (isNumeric(obj[k])) {
           obj[k] *= 2;
+        }
+      }
+    }
+  }
+
+  public addClass(obj: object, cls: string): string {
+    let propertiesObj;
+    let newArray = [];
+    for (const k in obj) {
+      if (obj.hasOwnProperty(k)) {
+        propertiesObj = obj[k];
+        newArray = propertiesObj.split(' ');
+        for (let i = 0; i < newArray.length; i++) {
+          if (obj.hasOwnProperty(k)) {
+            if (newArray.indexOf(cls) < 0) {
+              newArray.splice(newArray.length, 0, cls);
+              this.obj.className = newArray.join(' ');
+              return this.obj.className;
+            } else {
+              return this.obj.className;
+            }
+          }
         }
       }
     }
