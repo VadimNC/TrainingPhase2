@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ExamplesService} from '../examples.service';
+import {Subscription} from 'rxjs/index';
 
 @Component({
   selector: 'app-examples-training',
@@ -18,7 +19,9 @@ export class ExamplesTrainingComponent {
     show8: false,
     show9: false,
     show10: false,
-    show11: false
+    show11: false,
+    show12: false,
+    show13: false
   };
   public resultStringWithSymbolUp = '';
   public arrayOfStringsForCountSymbolsAmount: string[] = ['Есть', 'жизнь', 'на', 'Марсе'];
@@ -43,7 +46,14 @@ export class ExamplesTrainingComponent {
     height: 300,
     title: 'My menu'
   };
-  public obj = {className: 'open menu'};
+  public objectObservable = {className: ''};
+  public objectObservable2 = {className: ''};
+  public subscription: Subscription;
+  public str2 = '';
+  public subscription2: Subscription;
+
+  constructor(private examplesService: ExamplesService) {
+  }
 
   public bigFirstSymbol(str: string): string {
     if (!str) {
@@ -138,27 +148,67 @@ export class ExamplesTrainingComponent {
     }
   }
 
-  public addClass(obj: object, cls: string): string {
-    let propertiesObj;
-    let newArray = [];
-    for (const k in obj) {
-      if (obj.hasOwnProperty(k)) {
-        propertiesObj = obj[k];
-        newArray = propertiesObj.split(' ');
-        for (let i = 0; i < newArray.length; i++) {
+  public addClass(obj: object, cls: string): any {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    this.subscription = this.examplesService.getObj1().subscribe((data) => {
+        let newArray = [];
+        for (const k in obj) {
           if (obj.hasOwnProperty(k)) {
-            if (newArray.indexOf(cls) < 0) {
-              newArray.splice(newArray.length, 0, cls);
-              this.obj.className = newArray.join(' ');
-              return this.obj.className;
-            } else {
-              return this.obj.className;
+            newArray = data['className'].split(' ');
+            for (let i = 0; i < newArray.length; i++) {
+              if (obj.hasOwnProperty(k)) {
+                if (newArray.indexOf(cls) < 0) {
+                  newArray.splice(newArray.length, 0, cls);
+                  if (this.objectObservable.className) {
+                    this.objectObservable.className = this.objectObservable.className + ' ' + cls;
+                  } else {
+                    this.objectObservable.className = newArray.join(' ');
+                  }
+                  return this.objectObservable.className;
+                } else {
+                  return this.objectObservable.className;
+                }
+              }
             }
           }
         }
       }
-    }
+    );
   }
+
+  public camelize(str: string): any {
+    const arrayLowerCase = str.split('-');
+    const arrayUpperCase = [];
+    for (let i = 1; i < arrayLowerCase.length; i++) {
+      arrayUpperCase.push(arrayLowerCase[i].charAt(0).toUpperCase() + arrayLowerCase[i].substring(1));
+    }
+    this.str2 = arrayLowerCase[0] + arrayUpperCase.join(',');
+  }
+
+  public removeClass(obj: any, cls: string): any {
+    if (this.subscription2) {
+      this.subscription2.unsubscribe();
+    }
+    this.subscription2 = this.examplesService.objObservable2.subscribe((data) => {
+        let newArray = [];
+        for (const k in obj) {
+          if (obj.hasOwnProperty(k)) {
+            newArray = data['className'].split(' ');
+            for (let i = 0; i < newArray.length; i++) {
+              if (newArray[i] === cls) {
+                delete newArray[i];
+                console.log('==' + newArray);
+              }
+              this.objectObservable2.className = newArray.join(' ');
+            }
+          }
+        }
+      }
+    );
+  }
+
 }
 
 function compareNumeric(a, b) {
