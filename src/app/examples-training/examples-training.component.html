@@ -192,10 +192,45 @@
         <br>P.S. Ваша функция не должна добавлять лишних пробелов.
       </li>
       <div>
-        <button class="btn btn-primary" (click)="addClass(obj, 'new')">Run task #11(with 'new')</button>
-        <button class="btn btn-primary" (click)="addClass(obj, 'open')">Run task #11(with 'open')</button>
-        <button class="btn btn-primary" (click)="addClass(obj, 'me')">Run task #11(with 'me')</button>
-        <div><b>Results:</b> {{obj.className}}</div>
+        <button class="btn btn-primary" (click)="addClass(objectObservable, 'new')">Run task #11(with 'new')</button>
+        <button class="btn btn-primary" (click)="addClass(objectObservable, 'open')">Run task #11(with 'open')</button>
+        <button class="btn btn-primary" (click)="addClass(objectObservable, 'me')">Run task #11(with 'me')</button>
+        <div><b>Results:</b> {{objectObservable.className}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show12=!objShow.show12">Перевести текст вида
+      border-left-width в borderLeftWidth</h3>
+    <div *ngIf="objShow.show12">
+      <li>Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
+        То есть, дефисы удаляются, а все слова после них получают заглавную букву.
+        <br>Например:
+        <br>camelize("background-color") == 'backgroundColor';
+        <br>camelize("list-style-image") == 'listStyleImage';
+        <br>camelize("-webkit-transition") == 'WebkitTransition';
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="camelize('my-short-string')">Run task #12</button>
+        <div><b>Results:</b>{{str2}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show13=!objShow.show13">Функция removeClass</h3>
+    <div *ngIf="objShow.show13">
+      <li>У объекта есть свойство className, которое хранит список «классов» – слов, разделенных пробелами::
+        <br>var obj = className: 'open menu';
+        <br>Напишите функцию removeClass(obj, cls), которая удаляет класс cls, если он есть:
+        <br>removeClass(obj, 'open'); // obj.className='menu'
+        <br>removeClass(obj, 'blabla'); // без изменений (нет такого класса)
+        <br>P.S. Дополнительное усложнение. Функция должна корректно обрабатывать дублирование класса в строке:
+        <br>obj = className: 'open menu 1 open'
+        <br>removeClass(obj, 'open');
+        <br>alert( obj.className ); // 'menu 1'
+        <br>Лишних пробелов после функции образовываться не должно.
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="removeClass(objectObservable2, 'open')">Run task #13</button>
+        <div><b>Results:</b>{{objectObservable2.className}}</div>
       </div>
     </div>
 
