@@ -21,7 +21,10 @@ export class ExamplesTrainingComponent {
     show10: false,
     show11: false,
     show12: false,
-    show13: false
+    show13: false,
+    show14: false,
+    show15: false,
+    show16: false
   };
   public resultStringWithSymbolUp = '';
   public arrayOfStringsForCountSymbolsAmount: string[] = ['Есть', 'жизнь', 'на', 'Марсе'];
@@ -51,6 +54,13 @@ export class ExamplesTrainingComponent {
   public subscription: Subscription;
   public str2 = '';
   public subscription2: Subscription;
+  public arrayNumberStart = [5, 3, 8, 1];
+  public arrayNumberEnd = [];
+  public arrayReverseStart = [5, 2, 1, -10, 777];
+  public arrayReverseEnd = [];
+  public arrayOld = [5, 2, 1, -10, 777];
+  public arrayNew = [];
+  //public selected = 'option2';
 
   constructor(private examplesService: ExamplesService) {
   }
@@ -148,11 +158,11 @@ export class ExamplesTrainingComponent {
     }
   }
 
-  public addClass(obj: object, cls: string): any {
+  public addClass(obj: object, cls: string): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    this.subscription = this.examplesService.getObj1().subscribe((data) => {
+    this.subscription = this.examplesService.getObj1().subscribe((data: object) => {
         let newArray = [];
         for (const k in obj) {
           if (obj.hasOwnProperty(k)) {
@@ -166,9 +176,6 @@ export class ExamplesTrainingComponent {
                   } else {
                     this.objectObservable.className = newArray.join(' ');
                   }
-                  return this.objectObservable.className;
-                } else {
-                  return this.objectObservable.className;
                 }
               }
             }
@@ -178,7 +185,7 @@ export class ExamplesTrainingComponent {
     );
   }
 
-  public camelize(str: string): any {
+  public camelize(str: string): void {
     const arrayLowerCase = str.split('-');
     const arrayUpperCase = [];
     for (let i = 1; i < arrayLowerCase.length; i++) {
@@ -187,11 +194,11 @@ export class ExamplesTrainingComponent {
     this.str2 = arrayLowerCase[0] + arrayUpperCase.join(',');
   }
 
-  public removeClass(obj: any, cls: string): any {
+  public removeClass(obj: any, cls: string): void {
     if (this.subscription2) {
       this.subscription2.unsubscribe();
     }
-    this.subscription2 = this.examplesService.objObservable2.subscribe((data) => {
+    this.subscription2 = this.examplesService.objObservable2.subscribe((data: object) => {
         let newArray = [];
         for (const k in obj) {
           if (obj.hasOwnProperty(k)) {
@@ -199,7 +206,6 @@ export class ExamplesTrainingComponent {
             for (let i = 0; i < newArray.length; i++) {
               if (newArray[i] === cls) {
                 delete newArray[i];
-                console.log('==' + newArray);
               }
               this.objectObservable2.className = newArray.join(' ');
             }
@@ -207,6 +213,23 @@ export class ExamplesTrainingComponent {
         }
       }
     );
+  }
+
+  public filterRangeInPlace(arr: number[], a: number, b: number): void {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] < a || arr[i] > b) {
+        arr.splice(i, 1);
+        this.arrayNumberEnd = arr;
+      }
+    }
+  }
+
+  public customSortReverse(arr: any[]): void {
+    this.arrayReverseEnd = arr.reverse();
+  }
+
+  public createNewArray(arr: any[]): void {
+    this.arrayNew = arr.concat().sort(compareNumeric);
   }
 
 }

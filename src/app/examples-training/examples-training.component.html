@@ -2,7 +2,6 @@
 
   <div class="collection">
 
-
     <h3 class="collection-item showCursor" (click)="objShow.show1=!objShow.show1">Первая заглаваная буква</h3>
     <div *ngIf="objShow.show1">
       <li>Напишите функцию bigFirstSymbl(str), которая возвращает строку str с заглавным первым символом, например:
@@ -128,15 +127,11 @@
       </li>
       <div>
 
-        <div class="switch">
-          <label>
-            No properties
-            <input type="checkbox">
-            <span class="lever"></span>
-            Properties
-          </label>
-        </div>
-
+        <!--<p>You selected: {{selected}}</p>-->
+        <!--<select [(value)]="selected">-->
+          <!--<option value="option1">1</option>-->
+          <!--<option value="option2">2</option>-->
+        <!--</select>-->
         <button class="btn btn-primary" (click)="salarySum(salariesFull)">Run task #8(full prop)</button>
         <button class="btn btn-primary" (click)="salarySum(salariesNull)">Run task #8(null prop)</button>
         <div><b>Results:</b> {{sumSalaries}}</div>
@@ -229,8 +224,47 @@
         <br>Лишних пробелов после функции образовываться не должно.
       </li>
       <div>
-        <button class="btn btn-primary" (click)="removeClass(objectObservable2, 'open')">Run task #13</button>
+        <button class="btn btn-primary" (click)="removeClass(objectObservable2, '2')">Run task #13</button>
         <div><b>Results:</b>{{objectObservable2.className}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show14=!objShow.show14">Фильтрация массива "на месте"
+    </h3>
+    <div *ngIf="objShow.show14">
+      <li>Создайте функцию filterRangeInPlace(arr, a, b), которая получает массив с числами arr и удаляет из него все
+        числа вне диапазона a..b. То есть, проверка имеет вид a ≤ arr[i] ≤ b. Функция должна менять сам массив и ничего
+        не возвращать.
+        <br>Например:
+        <br>arr = [5, 3, 8, 1];
+        <br>filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
+        <br>alert( arr ); // массив изменился: остались [3, 1]
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="filterRangeInPlace(arrayNumberStart, 1, 4)">Run task #14</button>
+        <div><b>Results:</b>{{arrayNumberEnd}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show15=!objShow.show15">Сортировать в обратном порядке</h3>
+    <div *ngIf="objShow.show15">
+      <li>Отсортировать массив чисел в обратном порядке [5, 2, 1, -10, 777]
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="customSortReverse(arrayReverseStart)">Run task #15</button>
+        <div><b>Results:</b>{{arrayReverseEnd}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show16=!objShow.show16">Скопировать и отсортировать
+      массив</h3>
+    <div *ngIf="objShow.show16">
+      <li>Есть массив строк arr. Создайте массив arrSorted – из тех же элементов, но отсортированный.
+        Исходный массив не должен меняться. [5, 2, 1, -10, 777] // -10,1,2,5,777
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="createNewArray(arrayOld)">Run task #16</button>
+        <div><b>Results:</b>{{arrayNew}}</div>
       </div>
     </div>
 
