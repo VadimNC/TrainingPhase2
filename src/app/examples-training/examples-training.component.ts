@@ -8,24 +8,7 @@ import {Subscription} from 'rxjs/index';
   styleUrls: ['./examples-training.component.css']
 })
 export class ExamplesTrainingComponent {
-  public objShow = {
-    show1: false,
-    show2: false,
-    show3: false,
-    show4: false,
-    show5: false,
-    show6: false,
-    show7: false,
-    show8: false,
-    show9: false,
-    show10: false,
-    show11: false,
-    show12: false,
-    show13: false,
-    show14: false,
-    show15: false,
-    show16: false
-  };
+  public objShow = {};
   public resultStringWithSymbolUp = '';
   public arrayOfStringsForCountSymbolsAmount: string[] = ['Есть', 'жизнь', 'на', 'Марсе'];
   public arrLengthOfEachString: number[] = [];
@@ -41,7 +24,6 @@ export class ExamplesTrainingComponent {
     'Petya': 300,
     'Dasha': 250
   };
-  public salariesNull = {};
   public sumSalaries: number;
   public nameEmployee: string;
   public menu = {
@@ -60,7 +42,15 @@ export class ExamplesTrainingComponent {
   public arrayReverseEnd = [];
   public arrayOld = [5, 2, 1, -10, 777];
   public arrayNew = [];
-  //public selected = 'option2';
+  public selected = 'salariesFull';
+  public arrayRandomStart = [1, 2, 3, 4, 5];
+  public arrayRandomEnd = [];
+  public arrayObservable: any;
+  public subscription3: Subscription;
+
+  public selectedChadge(event: any) {
+    this.selected = event.target.value;
+  }
 
   constructor(private examplesService: ExamplesService) {
   }
@@ -112,15 +102,15 @@ export class ExamplesTrainingComponent {
     this.isObjectEmpty = Object.keys(obj).length === 0;
   }
 
-  public salarySum(obj: object): number {
+  public salarySum(): number {
     const arrayNumber: Array<any> = [];
-    if (Object.keys(obj).length === 0) {
+    if (this.selected === 'salariesNull') {
       return this.sumSalaries = 0;
-    } else {
-      for (const k in obj) {
-        if (obj.hasOwnProperty(k)) {
+    } else if (this.selected === 'salariesFull') {
+      for (const k in this.salariesFull) {
+        if (this.salariesFull.hasOwnProperty(k)) {
           let valueArrayObject: number;
-          valueArrayObject = obj[k];
+          valueArrayObject = this.salariesFull[k];
           arrayNumber.push(valueArrayObject);
           this.sumSalaries = arrayNumber.reduce((a, b) => a + b, 0);
         }
@@ -224,14 +214,42 @@ export class ExamplesTrainingComponent {
     }
   }
 
-  public customSortReverse(arr: any[]): void {
+  public customSortReverse(arr: string[]): void {
     this.arrayReverseEnd = arr.reverse();
   }
 
-  public createNewArray(arr: any[]): void {
-    this.arrayNew = arr.concat().sort(compareNumeric);
+  public createNewArray(arr: string[]): void {
+    this.arrayNew = arr.sort(compareNumeric);
   }
 
+  randomArray(arr: Array<number>): void {
+    arr.sort(function () {
+      return .5 - Math.random();
+    });
+    this.arrayRandomEnd = arr;
+  }
+
+  public sortOnAge(): void {
+    let dataObjectFromObservable;
+    let sortedObjects;
+    if (this.subscription3) {
+      this.subscription3.unsubscribe();
+    }
+    this.subscription3 = this.examplesService.getArrayObjects().subscribe((data: any) => {
+        for (let i = 0; i < data.length; i++) {
+          dataObjectFromObservable = data[i];
+          for (const key in dataObjectFromObservable) {
+            if (dataObjectFromObservable.hasOwnProperty(key)) {
+            }
+          }
+        }
+        sortedObjects = data.sort(function (a, b) {
+          return parseFloat(a.age) - parseFloat(b.age);
+        });
+        this.arrayObservable = sortedObjects;
+      }
+    );
+  }
 }
 
 function compareNumeric(a, b) {

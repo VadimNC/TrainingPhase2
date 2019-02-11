@@ -2,7 +2,7 @@
 
   <div class="collection">
 
-    <h3 class="collection-item showCursor" (click)="objShow.show1=!objShow.show1">Первая заглаваная буква</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show1=!objShow.show1">1. Первая заглаваная буква</h3>
     <div *ngIf="objShow.show1">
       <li>Напишите функцию bigFirstSymbl(str), которая возвращает строку str с заглавным первым символом, например:
         <br>myMethod1("вася") == "Вася";
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show2=!objShow.show2">Массив длин слов</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show2=!objShow.show2">2. Массив длин слов</h3>
     <div *ngIf="objShow.show2">
       <li>Код ниже получает из массива строк новый массив, содержащий их длины:
         <p class="ex">
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show3=!objShow.show3">Массив сумм рядомстоящих чисел</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show3=!objShow.show3">3. Массив сумм рядомстоящих чисел</h3>
     <div *ngIf="objShow.show3">
       <li>На входе массив чисел, например: arr = [1,2,3,4,5].
         Напишите функцию getSums(arrTask3), которая возвращает массив его частичных сумм.
@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show4=!objShow.show4">АнтиСпам</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show4=!objShow.show4">4. АнтиСпам</h3>
     <div *ngIf="objShow.show4">
       <li>Напишите функцию checkSpam(str), которая возвращает true, если строка str содержит „AUDI“ или „BMW“, а иначе
         false.
@@ -70,7 +70,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show5=!objShow.show5">Обрезание строки</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show5=!objShow.show5">5. Обрезание строки</h3>
     <div *ngIf="objShow.show5">
       <li>Создайте функцию truncate(str, maxlength), которая проверяет длину строки str, и если она превосходит
         maxlength
@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show6=!objShow.show6">Из строки в число</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show6=!objShow.show6">6. Из строки в число</h3>
     <div *ngIf="objShow.show6">
       <li>Есть стоимость в виде строки: "$120". То есть, первым идёт знак валюты, а затем – число.
         Создайте функцию extractCurrencyValue(str), которая будет из такой строки выделять число-значение, в данном
@@ -100,7 +100,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show7=!objShow.show7">Определите, пуст ли объект</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show7=!objShow.show7">7. Определите, пуст ли объект</h3>
     <div *ngIf="objShow.show7">
       <li>Создайте функцию isEmpty(obj), которая возвращает true, если в объекте нет свойств и false – если хоть одно
         свойство есть.
@@ -115,7 +115,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show8=!objShow.show8">Сумма свойств</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show8=!objShow.show8">8. Сумма свойств</h3>
     <div *ngIf="objShow.show8">
       <li> Есть объект salaries с зарплатами. Напишите код, который выведет сумму всех зарплат.
         Если объект пустой, то результат должен быть 0.
@@ -127,18 +127,17 @@
       </li>
       <div>
 
-        <!--<p>You selected: {{selected}}</p>-->
-        <!--<select [(value)]="selected">-->
-          <!--<option value="option1">1</option>-->
-          <!--<option value="option2">2</option>-->
-        <!--</select>-->
-        <button class="btn btn-primary" (click)="salarySum(salariesFull)">Run task #8(full prop)</button>
-        <button class="btn btn-primary" (click)="salarySum(salariesNull)">Run task #8(null prop)</button>
+
+        <select (change)="selectedChadge($event)">
+          <option value="salariesFull">Object with values</option>
+          <option value="salariesNull">Object without values</option>
+        </select>
+        <button class="btn btn-primary" (click)="salarySum()">Run task #8(change value)</button>
         <div><b>Results:</b> {{sumSalaries}}</div>
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show9=!objShow.show9">Свойство с наибольшим значением
+    <h3 class="collection-item showCursor" (click)="objShow.show9=!objShow.show9">9. Свойство с наибольшим значением
     </h3>
     <div *ngIf="objShow.show9">
       <li> Есть объект salaries с зарплатами. Напишите код, который выведет имя сотрудника, у которого самая большая
@@ -157,7 +156,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show10=!objShow.show10">Умножьте численные свойства на
+    <h3 class="collection-item showCursor" (click)="objShow.show10=!objShow.show10">10. Умножьте численные свойства на
       2</h3>
     <div *ngIf="objShow.show10">
       <li>Создайте функцию multiplyNumeric, которая получает объект и умножает все численные свойства на 2.
@@ -173,7 +172,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show11=!objShow.show11">Добавить класс в строку</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show11=!objShow.show11">11. Добавить класс в строку</h3>
     <div *ngIf="objShow.show11">
       <li>В объекте есть свойство className, которое содержит список «классов» – слов, разделенных пробелом:
         <br>var obj =
@@ -194,7 +193,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show12=!objShow.show12">Перевести текст вида
+    <h3 class="collection-item showCursor" (click)="objShow.show12=!objShow.show12">12. Перевести текст вида
       border-left-width в borderLeftWidth</h3>
     <div *ngIf="objShow.show12">
       <li>Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString».
@@ -210,7 +209,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show13=!objShow.show13">Функция removeClass</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show13=!objShow.show13">13. Функция removeClass</h3>
     <div *ngIf="objShow.show13">
       <li>У объекта есть свойство className, которое хранит список «классов» – слов, разделенных пробелами::
         <br>var obj = className: 'open menu';
@@ -229,7 +228,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show14=!objShow.show14">Фильтрация массива "на месте"
+    <h3 class="collection-item showCursor" (click)="objShow.show14=!objShow.show14">14. Фильтрация массива "на месте"
     </h3>
     <div *ngIf="objShow.show14">
       <li>Создайте функцию filterRangeInPlace(arr, a, b), которая получает массив с числами arr и удаляет из него все
@@ -246,7 +245,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show15=!objShow.show15">Сортировать в обратном порядке</h3>
+    <h3 class="collection-item showCursor" (click)="objShow.show15=!objShow.show15">15. Сортировать в обратном порядке</h3>
     <div *ngIf="objShow.show15">
       <li>Отсортировать массив чисел в обратном порядке [5, 2, 1, -10, 777]
       </li>
@@ -256,7 +255,7 @@
       </div>
     </div>
 
-    <h3 class="collection-item showCursor" (click)="objShow.show16=!objShow.show16">Скопировать и отсортировать
+    <h3 class="collection-item showCursor" (click)="objShow.show16=!objShow.show16">16. Скопировать и отсортировать
       массив</h3>
     <div *ngIf="objShow.show16">
       <li>Есть массив строк arr. Создайте массив arrSorted – из тех же элементов, но отсортированный.
@@ -265,6 +264,35 @@
       <div>
         <button class="btn btn-primary" (click)="createNewArray(arrayOld)">Run task #16</button>
         <div><b>Results:</b>{{arrayNew}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show17=!objShow.show17">17. Случайный порядок в массиве</h3>
+    <div *ngIf="objShow.show17">
+      <li>Используйте функцию sort для того, чтобы «перетрясти» элементы массива в случайном порядке [1, 2, 3, 4, 5]
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="randomArray(arrayRandomStart)">Run task #17</button>
+        <div><b>Results:</b>{{arrayRandomEnd}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show18=!objShow.show18">18. Сортировка объектов</h3>
+    <div *ngIf="objShow.show18">
+      <li>Напишите код, который отсортирует массив объектов people по полю age.
+        <br>Например:
+        <br>var vasya =  name: "Вася", age: 23 ;
+        <br>var masha =  name: "Маша", age: 100 ;
+        <br>var vovochka =  name: "Вовочка", age: 6 ;
+        <br>var people = [ vasya , masha , vovochka ];
+        <br>... ваш код ...
+        <br>// теперь people: [vovochka, masha, vasya]
+        <br>alert(people[0].age) // 6
+        <br>Выведите список имён в массиве после сортировки.
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="sortOnAge()">Run task #18</button>
+        <div><b>Results:</b>{{arrayObservable | json}}</div>
       </div>
     </div>
 
