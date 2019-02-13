@@ -296,6 +296,57 @@
       </div>
     </div>
 
+    <h3 class="collection-item showCursor" (click)="objShow.show19=!objShow.show19">19. Вывести односвязный список</h3>
+    <div *ngIf="objShow.show19">
+      <li>Напишите функцию printList(list), которая выводит элементы списка по очереди, при помощи цикла.
+        <br> var list =
+        value: 1,
+        next:
+        value: 2,
+        next:
+        value: 3,
+        next:
+        value: 4,
+        next: null
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="printListCycle(list)">Run task #19(with cycle)</button>
+        <button class="btn btn-primary" (click)="printListRecursion(list)">Run task #19(with recursion)</button>
+        <button class="btn btn-primary" (click)="printReverseListRecursion(list)">Run task #19(with recursion-reverse)</button>
+        <button class="btn btn-primary" (click)="printReverseListCycle(list)">Run task #19(with cycle-reverse)</button>
+        <div><b>Results:</b>{{listEnd}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show20=!objShow.show20">20. Отфильтровать анаграммы</h3>
+    <div *ngIf="objShow.show20">
+      <li>Напишите функцию aclean(arr), которая возвращает массив слов, очищенный от анаграмм.
+        <br>Например:
+        <br>var arr = ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"];
+        <br>alert( aclean(arr) ); // "воз,киборг,корсет" или "ЗОВ,гробик,сектор"
+        <br>Из каждой группы анаграмм должно остаться только одно слово, не важно какое.
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="aclean(anagramsStart)">Run task #20</button>
+        <div><b>Results:</b>{{anagramsEnd | json}}</div>
+      </div>
+    </div>
+
+    <h3 class="collection-item showCursor" (click)="objShow.show21=!objShow.show21">21. Оставить уникальные элементы массива</h3>
+    <div *ngIf="objShow.show21">
+      <li>Пусть arr – массив строк.
+        Напишите функцию unique(arr), которая возвращает массив, содержащий только уникальные элементы arr.
+        Например:
+        <br>function unique(arr)
+        <br>var strings = ["кришна", "кришна", "харе", "харе",
+        <br>"харе", "харе", "кришна", "кришна", "8-()" ];
+        <br>alert( unique(strings) ); // кришна, харе, 8-()
+      </li>
+      <div>
+        <button class="btn btn-primary" (click)="unique(uniqueStart)">Run task #21</button>
+        <div><b>Results:</b>{{uniqueEnd}}</div>
+      </div>
+    </div>
 
   </div>
 
