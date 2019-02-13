@@ -47,6 +47,25 @@ export class ExamplesTrainingComponent {
   public arrayRandomEnd = [];
   public arrayObservable: any;
   public subscription3: Subscription;
+  public list = {
+    value: 1,
+    next: {
+      value: 2,
+      next: {
+        value: 3,
+        next: {
+          value: 4,
+          next: null
+        }
+      }
+    }
+  };
+  public listEnd = '';
+  public n: Array<number> = [];
+  public anagramsStart = ['воз', 'киборг', 'корсет', 'ЗОВ', 'гробик', 'костер', 'сектор'];
+  public anagramsEnd: Array<string> = [];
+  public uniqueStart = ['кришна', 'кришна', 'харе', 'харе', 'харе', 'харе', 'кришна', 'кришна', '8-()'];
+  public uniqueEnd: Array<string>;
 
   public selectedChadge(event: any) {
     this.selected = event.target.value;
@@ -250,6 +269,73 @@ export class ExamplesTrainingComponent {
       }
     );
   }
+
+  public printListCycle(list): void {
+    let x = '';
+    while (list) {
+      x = x + ' ' + list.value;
+      list = list.next;
+    }
+    this.listEnd = x;
+  }
+
+  public printListRecursion(list): void {
+    this.n.push(list.value);
+    if (list.next) {
+      this.printListRecursion(list.next);
+    }
+    this.listEnd = this.n.join(',');
+  }
+
+  public printReverseListRecursion(list) {
+    if (list.next) {
+      this.printReverseListRecursion(list.next);
+    }
+    this.listEnd = this.listEnd + ',' + list.value;
+  }
+
+  public printReverseListCycle(list): void {
+    const arr = [];
+    const arr2 = [];
+    while (list) {
+      arr.push(list.value);
+      list = list.next;
+    }
+    for (let i = arr.length - 1; i >= 0; i--) {
+      arr2.push(arr[i]);
+    }
+    this.listEnd = arr2.join(',');
+  }
+
+  public aclean(arr: string): Array<string> {
+    const obj = {};
+    for (let i = 0; i < arr.length; i++) {
+      const sorting = arr[i].toUpperCase().split('').sort().join('');
+      obj[sorting] = arr[i];
+    }
+    for (const k in obj) {
+      if (obj.hasOwnProperty(k)) {
+        this.anagramsEnd.push(obj[k]);
+      }
+    }
+    return this.anagramsEnd;
+  }
+
+  public unique(arr: Array<string>): Array<string> {
+    const result = [];
+    nextStr:
+      for (let i = 0; i < arr.length; i++) {
+        const str = arr[i];
+        for (let j = 0; j < result.length; j++) {
+          if (result[j] === str) {
+            continue nextStr;
+          }
+        }
+        result.push(str);
+      }
+    return this.uniqueEnd = result;
+  }
+
 }
 
 function compareNumeric(a, b) {
